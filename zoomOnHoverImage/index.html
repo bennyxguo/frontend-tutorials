@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="tridiamond.css" />
+    <style>
+      .img-wrapper {
+        width: 400px;
+        height: 400px;
+        overflow: hidden;
+        box-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
+      }
+
+      .img-wrapper img {
+        height: 400px;
+        -webkit-transition: 0.3s linear;
+        transition: 0.3s linear;
+      }
+
+      .img-wrapper img:hover {
+        transform: scale(1.1);
+      }
+
+      .img-wrapper {
+        display: inline-block;
+        box-sizing: border-box;
+        border: 3px solid #000;
+      }
+
+      .grayscale-img {
+        -webkit-filter: grayscale(100%);
+        filter: grayscale(100%);
+      }
+
+      .grayscale-img:hover {
+        -webkit-filter: grayscale(0);
+        filter: grayscale(0);
+      }
+
+      .sepia-img {
+        -webkit-filter: sepia(100%);
+        filter: sepia(100%);
+      }
+
+      .sepia-img:hover {
+        -webkit-filter: sepia(0);
+        filter: sepia(0);
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <h1>悬停放大图片特效</h1>
+    </nav>
+    <main>
+      <div class="img-container">
+        <h2>放大特效</h2>
+        <div class="img-wrapper">
+          <img
+            class="zoom-img"
+            src="https://img-blog.csdnimg.cn/20200322220709631.jpeg"
+          />
+        </div>
+      </div>
+
+      <div class="img-container">
+        <h2>灰度过滤</h2>
+        <div class="img-wrapper">
+          <img
+            class="grayscale-img"
+            src="https://img-blog.csdnimg.cn/2020032211021728.png"
+          />
+        </div>
+      </div>
+
+      <div class="img-container">
+        <h2>深褐色过滤</h2>
+        <div class="img-wrapper">
+          <img
+            class="sepia-img"
+            src="https://img-blog.csdnimg.cn/2020032122230564.png"
+          />
+        </div>
+      </div>
+    </main>
+  </body>
+</html>
