@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="index.css" />
+    <link rel="stylesheet" href="btn.css" />
+  </head>
+  <body>
+    <div id="document">
+      <nav>
+        <h1>头部内容</h1>
+      </nav>
+      <main id="main">
+        <button class="pulse" onclick="addMore()">
+          点击看更多内容发生的变化
+        </button>
+        <p id="content">可以添加更多内容看看底部的变化哦！</p>
+      </main>
+      <footer>
+        <h1>底部内容</h1>
+      </footer>
+    </div>
+  </body>
+  <script>
+    function addMore() {
+      for (let i = 0; i < 20; i++) {
+        setTimeout(function() {
+          let content = document.createTextNode(
+            document.getElementById("content").innerHTML
+          );
+          let mainContainer = document.getElementById("main");
+          let pElement = document.createElement("p");
+          pElement.appendChild(content);
+          mainContainer.append(pElement);
+        }, 100 * i);
+      }
+    }
+  </script>
+</html>
