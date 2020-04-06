@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>图片视差效果</title>
+    <style>
+      .wrapper {
+        height: 100vh;
+      }
+
+      .parallax-img1,
+      .parallax-img2,
+      .parallax-img3,
+      .parallax-img4 {
+        position: relative;
+        background-attachment: fixed;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+      }
+
+      .parallax-img1 {
+        height: 100%;
+        background-image: url("http://ppe.oss-cn-shenzhen.aliyuncs.com/collections/182/7/thumb.jpg");
+      }
+      .parallax-img2 {
+        min-height: 400px;
+        background-image: url("http://ppe.oss-cn-shenzhen.aliyuncs.com/collections/182/5/thumb.jpg");
+      }
+      .parallax-img3 {
+        min-height: 600px;
+        background-image: url("http://ppe.oss-cn-shenzhen.aliyuncs.com/collections/181/10/thumb.jpg");
+      }
+      .parallax-img4 {
+        height: 100%;
+        background-image: url("http://ppe.oss-cn-shenzhen.aliyuncs.com/collections/173/1/thumb.jpg");
+      }
+
+      .caption {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 100%;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+      }
+
+      .caption > span {
+        background: rgb(32, 32, 32, 0.85);
+        color: #82fcfd;
+        padding: 18px 50px;
+        font-size: 30px;
+        border-radius: 16px;
+      }
+
+      .caption p {
+        margin: 0 0 15px 0;
+        padding: 0 0 15px 0;
+        border-bottom: 2px solid #82fcfd;
+      }
+
+      .caption > span p:first-of-type {
+        font-size: 40px;
+      }
+
+      /* 其他样式只为了更好看，不是必要的 */
+
+      body {
+        margin: 0;
+        background: #202020;
+      }
+
+      * {
+        font-family: Candara;
+        box-sizing: border-box;
+      }
+
+      h1 {
+        margin: 3rem 0 0 0;
+        text-align: center;
+        color: #fff;
+      }
+
+      .content {
+        width: 1200px;
+        margin: 0 auto;
+        color: #ddd;
+      }
+
+      p {
+        margin: 15px;
+        font-size: 1.1rem;
+        padding: 1.5rem 5rem;
+        color: #fff;
+      }
+    </style>
+  </head>
+  <body>
+    <a
+      href="https://github.com/TriDiamond/frontend-tutorials/tree/master/paralaxImages"
+      class="github-corner"
+      aria-label="View source on GitHub"
+    >
+      <svg
+        width="80"
+        height="80"
+        viewBox="0 0 250 250"
+        style="fill:#7CEEFC; color:#202020; position: absolute; top: 0; border: 0; right: 0;"
+        aria-hidden="true"
+      >
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path
+          d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+          fill="currentColor"
+          style="transform-origin: 130px 106px;"
+          class="octo-arm"
+        />
+        <path
+          d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+          fill="currentColor"
+          class="octo-body"
+        />
+      </svg>
+    </a>
+    <style>
+      .github-corner:hover .octo-arm {
+        animation: octocat-wave 560ms ease-in-out;
+      }
+      @keyframes octocat-wave {
+        0%,
+        100% {
+          transform: rotate(0);
+        }
+        20%,
+        60% {
+          transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+          transform: rotate(10deg);
+        }
+      }
+      @media (max-width: 500px) {
+        .github-corner:hover .octo-arm {
+          animation: none;
+        }
+        .github-corner .octo-arm {
+          animation: octocat-wave 560ms ease-in-out;
+        }
+      }
+    </style>
+    <div class="wrapper">
+      <div class="parallax-img1">
+        <div class="caption">
+          <span>
+            <img
+              src="../images/TriDiamond_logo_circle.png"
+              alt=""
+              height="80"
+              width="80"
+            />
+            <p>TriDiamond</p>
+            向下滑动
+          </span>
+        </div>
+      </div>
+      <div class="content">
+        <h1>图片视差效果DEMO</h1>
+        <p>
+          三钻因何而发生？ 我们不得不面对一个非常尴尬的事实，那就是，
+          从这个角度来看，
+          三钻的发生，到底需要如何做到，不三钻的发生，又会如何产生。
+          三钻因何而发生？ 既然如此，
+          在这种困难的抉择下，本人思来想去，寝食难安。
+          洛克在不经意间这样说过，学到很多东西的诀窍，就是一下子不要学很多。这启发了我，
+          在这种困难的抉择下，本人思来想去，寝食难安。
+          塞涅卡在不经意间这样说过，真正的人生，只有在经过艰难卓绝的斗争之后才能实现。这似乎解答了我的疑惑。
+          就我个人来说，三钻对我的意义，不能不说非常重大。
+          了解清楚三钻到底是一种怎么样的存在，是解决一切问题的关键。
+          对我个人而言，三钻不仅仅是一个重大的事件，还可能会改变我的人生。
+          总结的来说， 生活中，若三钻出现了，我们就不得不考虑它出现了的事实。
+          那么， 一般来讲，我们都必须务必慎重的考虑考虑。 经过上述讨论，
+          生活中，若三钻出现了，我们就不得不考虑它出现了的事实。
+          而这些并不是完全重要，更加重要的问题是，
+          要想清楚，三钻，到底是一种怎么样的存在。
+          雷锋说过一句富有哲理的话，自己活着，就是为了使别人过得更美好。这似乎解答了我的疑惑。
+          本人也是经过了深思熟虑，在每个日日夜夜思考这个问题。
+          问题的关键究竟为何？
+          三钻的发生，到底需要如何做到，不三钻的发生，又会如何产生。
+          拿破仑·希尔曾经说过，不要等待，时机永远不会恰到好处。带着这句话，我们还要更加慎重的审视这个问题：
+          这样看来，
+          迈克尔·F·斯特利说过一句富有哲理的话，最具挑战性的挑战莫过于提升自我。我希望诸位也能好好地体会这句话。
+          拉罗什福科曾经提到过，我们唯一不会改正的缺点是软弱。这句话语虽然很短，但令我浮想联翩。
+          这样看来， 就我个人来说，三钻对我的意义，不能不说非常重大。
+          从这个角度来看， 经过上述讨论， 经过上述讨论，
+          我们不得不面对一个非常尴尬的事实，那就是。
+        </p>
+      </div>
+      <div class="parallax-img2">
+        <div class="caption">
+          <span>不同的高度，不同的感觉</span>
+        </div>
+      </div>
+      <div class="content">
+        <p>
+          上下滑动能更好的体验视差效果是如何运作的。
+        </p>
+      </div>
+      <div class="parallax-img3">
+        <div class="caption"><span>感受一下视觉差，带来的冲击感</span></div>
+      </div>
+      <div class="content">
+        <p style="text-align: right;">Developed by 三钻</p>
+      </div>
+      <div class="parallax-img4">
+        <div class="caption">
+          <span>感觉怎么样？不要太激动了。</span>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

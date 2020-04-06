@@ -3,13 +3,31 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>固定底部内容Demo</title>
-    <link rel="stylesheet" href="index.css" />
-    <link rel="stylesheet" href="btn.css" />
+    <title>面包屑导航</title>
+    <link rel="stylesheet" href="../styles/common.css" />
+    <style>
+      .breadcrumb {
+        font-size: 1.6rem;
+        color: #fff;
+      }
+      .breadcrumb a:first-child {
+        color: #82fcfd;
+      }
+      .breadcrumb a:first-child::before {
+        content: " » ";
+      }
+      .breadcrumb a::after {
+        content: " /";
+        color: #ef6eae;
+      }
+      .breadcrumb a:last-child::after {
+        content: "";
+      }
+    </style>
   </head>
   <body>
     <a
-      href="https://github.com/TriDiamond/frontend-tutorials/tree/master/stickyFooter"
+      href="https://github.com/TriDiamond/frontend-tutorials/tree/master/breadcrumbs"
       class="github-corner"
       aria-label="View source on GitHub"
       ><svg
@@ -59,34 +77,13 @@
         }
       }
     </style>
-    <div id="document">
-      <nav>
-        <h1>头部内容</h1>
-      </nav>
-      <main id="main">
-        <button class="pulse" onclick="addMore()">
-          点击看更多内容发生的变化
-        </button>
-        <p id="content">可以添加更多内容看看底部的变化哦！</p>
-      </main>
-      <footer>
-        <h1>底部内容</h1>
-      </footer>
-    </div>
+    <nav><h1>「三钻前端教程」面包屑导航</h1></nav>
+    <main>
+      <div class="breadcrumb">
+        <a>三钻</a>
+        <a>前端</a>
+        <a>教程</a>
+      </div>
+    </main>
   </body>
-  <script>
-    function addMore() {
-      for (let i = 0; i < 20; i++) {
-        setTimeout(function() {
-          let content = document.createTextNode(
-            document.getElementById("content").innerHTML
-          );
-          let mainContainer = document.getElementById("main");
-          let pElement = document.createElement("p");
-          pElement.appendChild(content);
-          mainContainer.append(pElement);
-        }, 100 * i);
-      }
-    }
-  </script>
 </html>

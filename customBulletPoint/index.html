@@ -3,13 +3,46 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>固定底部内容Demo</title>
-    <link rel="stylesheet" href="index.css" />
-    <link rel="stylesheet" href="btn.css" />
+    <title>自定义列表符号</title>
+    <link rel="stylesheet" href="../styles/common.css" />
+    <style>
+      ul {
+        list-style: none;
+        color: #fff;
+        font-size: 20px;
+        border: 3px solid #000;
+        padding: 1rem 2rem;
+        min-height: 200px;
+        margin: 15px 2rem 0 0;
+        background: #323232;
+        box-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
+        border-radius: 8px;
+      }
+
+      li {
+        padding: 0.3rem 0;
+      }
+
+      li::before {
+        content: "🗹 ";
+        color: aqua;
+      }
+
+      li.completed::before {
+        content: "✔ ";
+        text-decoration: none;
+        color: greenyellow;
+      }
+
+      li.completed {
+        text-decoration: line-through;
+        color: #bdbdbd;
+      }
+    </style>
   </head>
   <body>
     <a
-      href="https://github.com/TriDiamond/frontend-tutorials/tree/master/stickyFooter"
+      href="https://github.com/TriDiamond/frontend-tutorials/tree/master/customBulletPoint"
       class="github-corner"
       aria-label="View source on GitHub"
       ><svg
@@ -59,34 +92,26 @@
         }
       }
     </style>
-    <div id="document">
-      <nav>
-        <h1>头部内容</h1>
-      </nav>
-      <main id="main">
-        <button class="pulse" onclick="addMore()">
-          点击看更多内容发生的变化
-        </button>
-        <p id="content">可以添加更多内容看看底部的变化哦！</p>
-      </main>
-      <footer>
-        <h1>底部内容</h1>
-      </footer>
-    </div>
+    <nav><h1>自定义列表符号</h1></nav>
+    <main>
+      <div>
+        <h2>待处理</h2>
+        <ul>
+          <li>待办任务1</li>
+          <li>待办任务2</li>
+          <li>待办任务3</li>
+          <li>待办任务4</li>
+          <li>待办任务5</li>
+        </ul>
+      </div>
+      <div>
+        <h2>已完成</h2>
+        <ul>
+          <li class="completed">完成任务1</li>
+          <li class="completed">完成任务2</li>
+          <li class="completed">完成任务3</li>
+        </ul>
+      </div>
+    </main>
   </body>
-  <script>
-    function addMore() {
-      for (let i = 0; i < 20; i++) {
-        setTimeout(function() {
-          let content = document.createTextNode(
-            document.getElementById("content").innerHTML
-          );
-          let mainContainer = document.getElementById("main");
-          let pElement = document.createElement("p");
-          pElement.appendChild(content);
-          mainContainer.append(pElement);
-        }, 100 * i);
-      }
-    }
-  </script>
 </html>

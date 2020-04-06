@@ -1,0 +1,40 @@
+* {
+  margin: 0;
+}
+
+body {
+  background: #202020;
+  display: flex;
+  flex-direction: column;
+}
+
+nav,
+main {
+  padding: 25px;
+}
+
+nav {
+  display: flex;
+  justify-content: center;
+  color: #82fcfd;
+  background: #323232;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
+}
+
+nav > h1 {
+  text-shadow: 1px 1px 4px #00000080;
+}
+
+main {
+  flex-grow: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-content: center;
+  padding: 5rem;
+}
+
+h2 {
+  color: #fff;
+  text-shadow: 1px 1px 4px #00000080;
+}

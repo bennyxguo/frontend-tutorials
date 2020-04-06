@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>裁剪图像的动画</title>
+    <link rel="stylesheet" href="../styles/common.css" />
+    <style>
+      input {
+        transform: scale(1.5);
+        margin: 10px 5px;
+        color: #fff;
+      }
+
+      img {
+        width: 1920px;
+        height: 1080px;
+        transition: 0s;
+      }
+
+      input:checked + br + img {
+        width: 500px;
+        height: 500px;
+        object-fit: cover;
+        object-position: left-top;
+        transition: width 2s, height 4s;
+      }
+
+      main {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        color: #fff;
+      }
+    </style>
+  </head>
+  <body>
+    <nav><h1>裁剪图像的动画</h1></nav>
+    <main>
+      勾选裁剪图片 <input type="checkbox" />
+      <br />
+      <img
+        src="https://img-blog.csdnimg.cn/2020032122230564.png"
+        alt="Random"
+      />
+    </main>
+  </body>
+</html>

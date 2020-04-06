@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>进阶视差图片效果</title>
+    <style>
+      @import url(https://fonts.googleapis.com/css?family=Amatic + SC:400, 700);
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        width: 100%;
+        font-family: "Amatic SC", cursive;
+      }
+      .block {
+        width: 100%;
+        height: 100%;
+        position: relative;
+        overflow: hidden;
+        font-size: 16px;
+      }
+      .block h2 {
+        position: relative;
+        display: block;
+        text-align: center;
+        margin: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 10vw;
+        color: white;
+        font-weight: 400;
+      }
+      .img-parallax {
+        width: 100vmax;
+        z-index: -1;
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translate(-50%, 0);
+        pointer-events: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="block">
+      <img
+        src="https://unsplash.it/1920/1920/?image=1005"
+        data-speed="-1"
+        class="img-parallax"
+      />
+      <h2>视差速度 -1</h2>
+    </div>
+    <div class="block">
+      <img
+        src="https://unsplash.it/1920/1920/?image=1067"
+        data-speed="1"
+        class="img-parallax"
+      />
+      <h2>视差速度 1</h2>
+    </div>
+    <div class="block">
+      <img
+        src="https://unsplash.it/1920/1920/?gravity=center"
+        data-speed="-0.25"
+        class="img-parallax"
+      />
+      <h2>视差速度 -0.25</h2>
+    </div>
+    <div class="block">
+      <img
+        src="https://unsplash.it/1920/1920/?image=1080"
+        data-speed="0.25"
+        class="img-parallax"
+      />
+      <h2>视差速度 0.25</h2>
+    </div>
+    <div class="block">
+      <img
+        src="https://unsplash.it/1920/1920/?random"
+        data-speed="-0.75"
+        class="img-parallax"
+      />
+      <h2>视差速度 -0.75</h2>
+    </div>
+    <div class="block">
+      <img
+        src="https://unsplash.it/1920/1920/?blur"
+        data-speed="0.75"
+        class="img-parallax"
+      />
+      <h2>视差速度 0.75</h2>
+    </div>
+  </body>
+  <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+  <script>
+    // I know that the code could be better.
+    // If you have some tips or improvement, please let me know.
+    // Credit to Renan Breno code-pen
+
+    $(".img-parallax").each(function () {
+      var img = $(this);
+      var imgParent = $(this).parent();
+      function parallaxImg() {
+        var speed = img.data("speed");
+        var imgY = imgParent.offset().top;
+        var winY = $(this).scrollTop();
+        var winH = $(this).height();
+        var parentH = imgParent.innerHeight();
+
+        // The next pixel to show on screen
+        var winBottom = winY + winH;
+
+        // If block is shown on screen
+        if (winBottom > imgY && winY < imgY + parentH) {
+          // Number of pixels shown after block appear
+          var imgBottom = (winBottom - imgY) * speed;
+          // Max number of pixels until block disappear
+          var imgTop = winH + parentH;
+          // Porcentage between start showing until disappearing
+          var imgPercent = (imgBottom / imgTop) * 100 + (50 - speed * 50);
+        }
+        img.css({
+          top: imgPercent + "%",
+          transform: "translate(-50%, -" + imgPercent + "%)",
+        });
+      }
+      $(document).on({
+        scroll: function () {
+          parallaxImg();
+        },
+        ready: function () {
+          parallaxImg();
+        },
+      });
+    });
+  </script>
+</html>
