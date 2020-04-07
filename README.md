@@ -6,7 +6,7 @@
 
 1. [固定底部](http://tridiamond.me/frontend-tutorials/stickyFooter/) ｜ [教程文章](https://tridiamond.blog.csdn.net/article/details/105222289)
 2. [图片放大特效](http://tridiamond.me/frontend-tutorials/zoomOnHoverImage/) ｜ [教程文章](https://tridiamond.blog.csdn.net/article/details/105222289)
-3. [瞬间黑暗模式](http://tridiamond.me/frontend-tutorials/instantDarkMode/instantDarkMode/) ｜ [教程文章](https://tridiamond.blog.csdn.net/article/details/105222289)
+3. [瞬间黑暗模式](http://tridiamond.me/frontend-tutorials/instantDarkMode/instantDark/) ｜ [教程文章](https://tridiamond.blog.csdn.net/article/details/105222289)
 4. [Darkmode.js 黑暗模式](http://tridiamond.me/frontend-tutorials/instantDarkMode/darkmodeJs/) ｜ [教程文章](https://tridiamond.blog.csdn.net/article/details/105222289)
 5. [自定义列表](http://tridiamond.me/frontend-tutorials/customBulletPoint/) ｜ [教程文章](https://tridiamond.blog.csdn.net/article/details/105222289)
 6. [面包屑导航](http://tridiamond.me/frontend-tutorials/breadcrums/) ｜ [教程文章](https://tridiamond.blog.csdn.net/article/details/105222289)
