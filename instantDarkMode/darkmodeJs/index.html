@@ -69,7 +69,14 @@
           width="80"
           height="80"
           viewBox="0 0 250 250"
-          style="fill:#fff; color:#151513; position: absolute; top: 0; border: 0; right: 0;"
+          style="
+            fill: #fff;
+            color: #151513;
+            position: absolute;
+            top: 0;
+            border: 0;
+            right: 0;
+          "
           aria-hidden="true"
         >
           <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
@@ -121,7 +128,7 @@
       <h1>TriDiamond</h1>
       <p>Developed by 三钻</p>
       <div class="mode">
-        <p id="light-mode" style="display: none">
+        <p id="light-mode" style="display: none;">
           <svg width="24" height="24">
             <rect width="24" height="24" fill="none" rx="0" ry="0" />
             <path
@@ -175,13 +182,13 @@
       buttonColorLight: "#fff", // default: '#fff'
       saveInCookies: true, // default: true,
       label: "🌓", // default: ''
-      autoMatchOsTheme: true // default: true
+      autoMatchOsTheme: true, // default: true
     };
 
     let darkmode = new Darkmode(options);
     darkmode.showWidget();
 
-    $("document").ready(function() {
+    $("document").ready(function () {
       if (darkmode.isActivated()) {
         document.getElementById("light-mode").style.display = "none";
         document.getElementById("dark-mode").style.display = "flex";
@@ -191,7 +198,7 @@
       }
     });
 
-    $(".darkmode-toggle").click(function() {
+    $(".darkmode-toggle").click(function () {
       if (darkmode.isActivated()) {
         document.getElementById("light-mode").style.display = "none";
         document.getElementById("dark-mode").style.display = "flex";
