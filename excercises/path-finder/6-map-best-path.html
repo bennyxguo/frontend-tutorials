@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>寻路算法 —— 三钻</title>
+    <link rel="stylesheet" href="./obsidian.css" />
+    <style>
+      .cell {
+        display: inline-block;
+        line-height: 7px;
+        width: 6px;
+        height: 6px;
+        background-color: var(--sub-bg-color);
+        border-bottom: solid 1px var(--bg-color);
+        border-right: solid 1px var(--bg-color);
+        vertical-align: bottom;
+        transition: all 400ms ease;
+      }
+      #container {
+        padding-bottom: 1rem;
+        display: flex;
+        flex-wrap: wrap;
+        width: 701px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1 class="purple">
+      Find Path Exercise
+      <span class="blue">6 — Best path</span>
+    </h1>
+
+    <div id="container"></div>
+    <!-- 保存地图数据到 localStorage -->
+    <div>
+      <button onclick="localStorage['map'] = JSON.stringify(map)">save</button>
+      <button onclick="findPath(map, [0,0], [50,50])">find</button>
+    </div>
+  </body>
+  <script>
+    class Sorted {
+      constructor(data, compare) {
+        this.data = data.slice();
+        this.compare = compare || ((a, b) => a - b);
+      }
+      take() {
+        // 考虑到 null 也是可以参与比较的，所以这里返回 null 是不合适的
+        if (!this.data.length) return;
+        // 记录最小的值
+        // 默认第一个位置为最小值
+        let min = this.data[0];
+        // 记录最小值的位置
+        let minIndex = 0;
+
+        // 开始比较数组里面的所有值，找到更小的值，就记录为 min
+        // 同时记录最小值，和最小值的位置
+        for (let i = 1; i < this.data.length; i++) {
+          if (this.compare(this.data[i], min) < 0) {
+            min = this.data[i];
+            minIndex = i;
+          }
+        }
+
+        // 现在我们要把最小值拿出去了，所以要在我们当前的数据中移除
+        // 这里我们不考虑使用 splice，因为 splice 移除会涉及数组内的元素都要往前挪动
+        // 这样 splice 就会有一个 O(N) 的时间复杂度
+        // 这里我们用一个小技巧，把数组里面最后一位的值挪动到当前发现最小值的位置
+        // 最后使用 pop 把最后一位数据移除
+        this.data[minIndex] = this.data[this.data.length - 1];
+        this.data.pop();
+        // 最后把最小值输出
+        return min;
+      }
+      give(value) {
+        this.data.push(value);
+      }
+      get length() {
+        return this.data.length;
+      }
+    }
+
+    let map = localStorage['map'] ? JSON.parse(localStorage['map']) : Array(10000).fill(0);
+
+    let container = document.getElementById('container');
+
+    for (let y = 0; y < 100; y++) {
+      for (let x = 0; x < 100; x++) {
+        // 创建地图方格
+        let cell = document.createElement('div');
+        cell.classList.add('cell');
+
+        if (map[100 * y + x] == 1) cell.style.backgroundColor = 'aqua';
+
+        cell.addEventListener('mousemove', () => {
+          if (mousedown) {
+            if (clear) {
+              cell.style.backgroundColor = '';
+              map[100 * y + x] = 0;
+            } else {
+              cell.style.backgroundColor = 'aqua';
+              map[100 * y + x] = 1;
+            }
+          }
+        });
+
+        container.appendChild(cell);
+      }
+    }
+
+    let mousedown = false;
+    let clear = false;
+
+    // 鼠标按键点击时，把鼠标点击状态变为 true
+    document.addEventListener('mousedown', e => {
+      mousedown = true;
+      clear = e.which === 3;
+    });
+    // 离开点击鼠标按键后，把状态更变成 false
+    document.addEventListener('mouseup', () => (mousedown = false));
+    // 因为我们需要使用右键，所以要把右键默认打开菜单禁用
+    document.addEventListener('contextmenu', e => e.preventDefault());
+
+    function sleep(t) {
+      return new Promise(function (resolve) {
+        setTimeout(resolve, t);
+      });
+    }
+
+    async function findPath(map, start, end) {
+      // 创建一个记录表格
+      let table = Object.create(map);
+      let queue = new Sorted([start], (a, b) => distance(a) - distance(b));
+
+      async function insert(x, y, pre) {
+        // 到达底盘边缘，直接停止
+        if (x < 0 || x >= 100 || y < 0 || y >= 100) return;
+        // 遇到地图的墙，也停止
+        if (table[y * 100 + x]) return;
+        // 加入 30 毫秒的停顿，让我们可以看到 UI 上面的变化
+        await sleep(1);
+        // 给搜索到的路径的格子加上背景颜色
+        container.children[y * 100 + x].style.backgroundColor = 'DARKSLATEBLUE';
+        // 标记走过的格子的值，标记为上一个格子的 x，y 位置
+        table[y * 100 + x] = pre;
+        // 把可走的路推入队列
+        queue.give([x, y]);
+      }
+
+      function distance(point) {
+        // 使用三角形 x^2 + y^2 = z^2 的方式来计算距离
+        return (point[0] - end[0]) ** 2 + (point[1] - end[1]) ** 2;
+      }
+
+      // 循环格子 4 边的格子
+      while (queue.length) {
+        let [x, y] = queue.take();
+        console.log(x, y);
+
+        // 遇到了终点位置就可以返回了
+        if (x === end[0] && y === end[1]) {
+          let path = [];
+
+          // 往回走，直到走到起点
+          // 这样就能画出最佳路径了
+          while (x != start[0] || y != start[1]) {
+            path.push(map[y * 100 + x]);
+            [x, y] = table[y * 100 + x];
+            container.children[y * 100 + x].style.backgroundColor = 'fuchsia';
+          }
+
+          return path;
+        }
+
+        // 把上下左右推入队列
+        await insert(x - 1, y, [x, y]);
+        await insert(x, y - 1, [x, y]);
+        await insert(x + 1, y, [x, y]);
+        await insert(x, y + 1, [x, y]);
+
+        // 把 4 个 斜边推入队列
+        await insert(x - 1, y - 1, [x, y]);
+        await insert(x + 1, y - 1, [x, y]);
+        await insert(x - 1, y + 1, [x, y]);
+        await insert(x + 1, y + 1, [x, y]);
+      }
+
+      return null;
+    }
+  </script>
+</html>

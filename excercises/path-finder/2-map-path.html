@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>寻路算法 —— 三钻</title>
+    <link rel="stylesheet" href="./obsidian.css" />
+    <style>
+      .cell {
+        display: inline-block;
+        line-height: 7px;
+        width: 6px;
+        height: 6px;
+        background-color: var(--sub-bg-color);
+        border-bottom: solid 1px var(--bg-color);
+        border-right: solid 1px var(--bg-color);
+        vertical-align: bottom;
+      }
+      #container {
+        margin: 0 0 1rem 0;
+        display: flex;
+        flex-wrap: wrap;
+        width: 701px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1 class="purple">
+      Find Path Exercise
+      <span class="blue">2 — Path</span>
+    </h1>
+    <div id="container"></div>
+    <!-- 保存地图数据到 localStorage -->
+    <div>
+      <button onclick="localStorage['map'] = JSON.stringify(map)">save</button>
+      <button onclick="path(map, [0,0], [50,50])">find</button>
+    </div>
+  </body>
+  <script>
+    let map = localStorage['map'] ? JSON.parse(localStorage['map']) : Array(10000).fill(0);
+
+    let container = document.getElementById('container');
+
+    for (let y = 0; y < 100; y++) {
+      for (let x = 0; x < 100; x++) {
+        // 创建地图方格
+        let cell = document.createElement('div');
+        cell.classList.add('cell');
+
+        if (map[100 * y + x] == 1) cell.style.backgroundColor = 'aqua';
+
+        cell.addEventListener('mousemove', () => {
+          if (mousedown) {
+            if (clear) {
+              cell.style.backgroundColor = '';
+              map[100 * y + x] = 0;
+            } else {
+              cell.style.backgroundColor = 'aqua';
+              map[100 * y + x] = 1;
+            }
+          }
+        });
+
+        container.appendChild(cell);
+      }
+    }
+
+    let mousedown = false;
+    let clear = false;
+
+    // 鼠标按键点击时，把鼠标点击状态变为 true
+    document.addEventListener('mousedown', e => {
+      mousedown = true;
+      clear = e.which === 3;
+    });
+    // 离开点击鼠标按键后，把状态更变成 false
+    document.addEventListener('mouseup', () => (mousedown = false));
+    // 因为我们需要使用右键，所以要把右键默认打开菜单禁用
+    document.addEventListener('contextmenu', e => e.preventDefault());
+
+    /**
+     * 寻路方法
+     * @param {Array} map 地图数据
+     * @param {Array} start 起点 例如：[0, 0]
+     * @param {Array} end 终点 例如：[50, 50]
+     * @return Boolean
+     */
+    function path(map, start, end) {
+      var queue = [start];
+
+      /**
+       * 入队方法
+       * @param {Integer} x
+       * @param {Integer} y
+       */
+      function insert(x, y) {
+        // 到达底盘边缘，直接停止
+        if (x < 0 || x >= 100 || y < 0 || y >= 100) return;
+        // 遇到地图的墙，也停止
+        if (map[y * 100 + x]) return;
+        // 标记可以走的路的格子的状态为 2
+        map[y * 100 + x] = 2;
+        // 把可走的路推入队列
+        queue.push([x, y]);
+      }
+
+      // 循环格子 4 边的格子
+      while (queue.length) {
+        let [x, y] = queue.shift();
+        console.log(x, y);
+
+        // 遇到了终点位置就可以返回了
+        if (x === end[0] && y === end[1]) return true;
+
+        // 把上下左右推入队列
+        insert(x - 1, y);
+        insert(x, y - 1);
+        insert(x + 1, y);
+        insert(x, y + 1);
+      }
+
+      return false;
+    }
+  </script>
+</html>

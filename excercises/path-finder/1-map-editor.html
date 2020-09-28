@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>地图编辑器 —— 三钻</title>
+    <link rel="stylesheet" href="./obsidian.css" />
+    <style>
+      .cell {
+        display: inline-block;
+        line-height: 7px;
+        width: 6px;
+        height: 6px;
+        background-color: var(--sub-bg-color);
+        border-bottom: solid 1px var(--bg-color);
+        border-right: solid 1px var(--bg-color);
+        vertical-align: bottom;
+        transition: all 400ms ease;
+      }
+      #container {
+        margin: 0 0 1rem 0;
+        display: flex;
+        flex-wrap: wrap;
+        width: 701px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1 class="purple">
+      Find Path Exercise
+      <span class="blue">1 — Editor</span>
+    </h1>
+    <div id="container"></div>
+    <!-- 保存地图数据到 localStorage -->
+    <div>
+      <button onclick="localStorage['map'] = JSON.stringify(map)">save</button>
+    </div>
+  </body>
+  <script>
+    let map = localStorage['map'] ? JSON.parse(localStorage['map']) : Array(10000).fill(0);
+
+    let container = document.getElementById('container');
+
+    for (let y = 0; y < 100; y++) {
+      for (let x = 0; x < 100; x++) {
+        // 创建地图方格
+        let cell = document.createElement('div');
+        cell.classList.add('cell');
+
+        if (map[100 * y + x] == 1) cell.style.backgroundColor = 'aqua';
+
+        cell.addEventListener('mousemove', () => {
+          if (mousedown) {
+            if (clear) {
+              cell.style.backgroundColor = '';
+              map[100 * y + x] = 0;
+            } else {
+              cell.style.backgroundColor = 'aqua';
+              map[100 * y + x] = 1;
+            }
+          }
+        });
+
+        container.appendChild(cell);
+      }
+    }
+
+    let mousedown = false;
+    let clear = false;
+
+    // 鼠标按键点击时，把鼠标点击状态变为 true
+    document.addEventListener('mousedown', e => {
+      mousedown = true;
+      clear = e.which === 3;
+    });
+    // 离开点击鼠标按键后，把状态更变成 false
+    document.addEventListener('mouseup', () => (mousedown = false));
+    // 因为我们需要使用右键，所以要把右键默认打开菜单禁用
+    document.addEventListener('contextmenu', e => e.preventDefault());
+
+    function path(map, start, end) {}
+  </script>
+</html>
