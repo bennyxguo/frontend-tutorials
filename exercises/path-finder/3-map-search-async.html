@@ -34,7 +34,7 @@
     <!-- 保存地图数据到 localStorage -->
     <div>
       <button onclick="localStorage['map'] = JSON.stringify(map)">save</button>
-      <button onclick="findPath(map, [0,0], [50,50])">find</button>
+      <button onclick="path(map, [0,0], [50,50])">find</button>
     </div>
   </body>
   <script>
@@ -79,15 +79,32 @@
     // 因为我们需要使用右键，所以要把右键默认打开菜单禁用
     document.addEventListener('contextmenu', e => e.preventDefault());
 
+    /**
+     * 等待函数
+     * @param {Integer} t 时间 (秒)
+     * @return Promise
+     */
     function sleep(t) {
       return new Promise(function (resolve) {
         setTimeout(resolve, t);
       });
     }
 
-    async function findPath(map, start, end) {
+    /**
+     * 寻路方法 (异步)
+     * @param {Array} map 地图数据
+     * @param {Array} start 起点 例如：[0, 0]
+     * @param {Array} end 终点 例如：[50, 50]
+     * @return Boolean
+     */
+    async function path(map, start, end) {
       var queue = [start];
 
+      /**
+       * 入队方法 (异步)
+       * @param {Integer} x
+       * @param {Integer} y
+       */
       async function insert(x, y) {
         // 到达底盘边缘，直接停止
         if (x < 0 || x >= 100 || y < 0 || y >= 100) return;

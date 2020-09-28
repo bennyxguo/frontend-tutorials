@@ -40,6 +40,7 @@
     </div>
   </body>
   <script>
+    /** 排序数据类 */
     class Sorted {
       constructor(data, compare) {
         this.data = data.slice();
@@ -122,24 +123,42 @@
     // 因为我们需要使用右键，所以要把右键默认打开菜单禁用
     document.addEventListener('contextmenu', e => e.preventDefault());
 
+    /**
+     * 等待函数
+     * @param {Integer} t 时间 (秒)
+     * @return Promise
+     */
     function sleep(t) {
       return new Promise(function (resolve) {
         setTimeout(resolve, t);
       });
     }
 
+    /**
+     * 寻路方法 (异步)
+     * @param {Array} map 地图数据
+     * @param {Array} start 起点 例如：[0, 0]
+     * @param {Array} end 终点 例如：[50, 50]
+     * @return Boolean
+     */
     async function findPath(map, start, end) {
       // 创建一个记录表格
       let table = Object.create(map);
       let queue = [start];
 
+      /**
+       * 入队方法 (异步)
+       * @param {Integer} x
+       * @param {Integer} y
+       * @param {Array} pre 上一个格子的坐标：[x,y]
+       */
       async function insert(x, y, pre) {
         // 到达底盘边缘，直接停止
         if (x < 0 || x >= 100 || y < 0 || y >= 100) return;
         // 遇到地图的墙，也停止
         if (table[y * 100 + x]) return;
         // 加入 30 毫秒的停顿，让我们可以看到 UI 上面的变化
-        await sleep(1);
+        // await sleep(1);
         // 给搜索到的路径的格子加上背景颜色
         container.children[y * 100 + x].style.backgroundColor = 'DARKSLATEBLUE';
         // 标记走过的格子的值，标记为上一个格子的 x，y 位置
@@ -151,7 +170,7 @@
       // 循环格子 4 边的格子
       while (queue.length) {
         let [x, y] = queue.shift();
-        console.log(x, y);
+        // console.log(x, y);
 
         // 遇到了终点位置就可以返回了
         if (x === end[0] && y === end[1]) {
@@ -162,6 +181,7 @@
           while (x != start[0] || y != start[1]) {
             path.push(map[y * 100 + x]);
             [x, y] = table[y * 100 + x];
+            await sleep(1);
             container.children[y * 100 + x].style.backgroundColor = 'fuchsia';
           }
 
