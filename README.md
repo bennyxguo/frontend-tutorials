@@ -1,6 +1,22 @@
-# 前端技巧和教程大全
+<p align="center"><a href="https://tridiamond.tech" target="_blank" rel="noopener noreferrer"><img width="100" src="https://img-blog.csdnimg.cn/20200930013332450.png" alt="TriDiamond logo"></a></p>
+
+<h1 align="center">前端技巧和教程集合</h1>
+
+<div align="center">
 
 这里主要个人收集的前端技巧和教程的源代码
+
+  <p align="center">
+    <img src="https://img.shields.io/github/issues/TriDiamond/frontend-tutorials">
+    <img src="https://img.shields.io/github/forks/TriDiamond/frontend-tutorials">
+    <img src="https://img.shields.io/github/stars/TriDiamond/frontend-tutorials">
+    <img src="https://img.shields.io/github/last-commit/TriDiamond/frontend-tutorials">
+    <img src="https://img.shields.io/github/license/TriDiamond/frontend-tutorials">
+  </p>
+
+</div>
+
+<br>
 
 ## 8 个前端常用 HTML+CSS 技巧教程：固定底部，图片特效和更多
 
@@ -16,15 +32,11 @@
 10. [混合模式（Blend）](http://tridiamond.tech/frontend-tutorials/tricks/blendMode/) ｜ [教程文章](https://tridiamond.blog.csdn.net/article/details/105222289)
 11. [瀑布流布局](http://tridiamond.tech/frontend-tutorials/tricks/waterfall/) ｜ [教程文章](https://tridiamond.blog.csdn.net/article/details/105222289)
 
----
-
 ## Free Code Camp 前端闯关教程系列
 
 ### 响应式开发设计
 
 1. [勇闯 28 个关卡学会 HTML 与 HTML5 基础｜ FCC 前端教程](https://tridiamond.blog.csdn.net/article/details/105915758)
-
----
 
 ## 前端编程训练与算法
 
