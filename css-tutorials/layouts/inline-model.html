@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Inline-model | 三钻</title>
+    <link rel="stylesheet" href="../obsidian.css" />
+    <style>
+      * {
+        transition: all 200ms ease;
+      }
+      .wrapper {
+        margin: 2rem;
+        font-size: 50px;
+        line-height: 100px;
+        background-color: var(--sub-bg-color);
+      }
+      .base-line {
+        overflow: visible;
+        display: inline-block;
+        width: 1px;
+        height: 1px;
+      }
+      .base-line div {
+        width: 1000px;
+        height: 1px;
+        background: var(--purple-color);
+      }
+      .text {
+        color: #ddd;
+      }
+      .inline-box {
+        line-height: 70px;
+        width: 100px;
+        height: 150px;
+        background-color: aqua;
+        display: inline-block;
+      }
+      .controls {
+        margin: 2rem;
+      }
+    </style>
+  </head>
+  <body style="margin: 0; padding: 0">
+    <div class="wrapper">
+      <div class="base-line">
+        <div></div>
+      </div>
+      <span class="text">Hello world 中文</span>
+      <div class="inline-box"></div>
+    </div>
+    <div class="controls">
+      <p class="purple">修改盒子内容</p>
+      <button onclick="changeContent('b')">Add "b"</button>
+      <button onclick="changeContent('b <br/> c')">Add "b" + "c"</button>
+      <button onclick="changeContent('')">Clear words</button>
+    </div>
+    <div class="controls">
+      <p class="purple">修改对齐 `vertical-align` 属性</p>
+      <button onclick="align('top')">Top</button>
+      <button onclick="align('middle')">Middle</button>
+      <button onclick="align('bottom')">Bottom</button>
+      <button onclick="align('text-bottom')">Text Bottom</button>
+      <button onclick="align('initial')">Clear</button>
+    </div>
+    <div class="controls">
+      <p class="purple">查看不同的对齐线</p>
+      <button onclick="alignLine('top')">字体上缘线</button>
+      <button onclick="alignLine('middle')">字体中心线</button>
+      <button onclick="alignLine('bottom')">字体下缘线</button>
+      <button onclick="alignLine('initial')">对齐线</button>
+    </div>
+  </body>
+  <script>
+    function changeContent(content) {
+      let element = document.getElementsByClassName('inline-box')[0];
+      element.innerHTML = content;
+    }
+
+    function align(side) {
+      let element = document.getElementsByClassName('inline-box')[0];
+      element.style.verticalAlign = side;
+    }
+
+    function alignLine(side) {
+      let element = document.getElementsByClassName('base-line')[0];
+      element.style.verticalAlign = side;
+    }
+  </script>
+</html>
