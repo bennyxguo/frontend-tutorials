@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Keyframe example | 三钻</title>
+    <link rel="stylesheet" href="../obsidian.css" />
+    <style>
+      @keyframes myKeyFrame {
+        from {
+          background: red;
+        }
+        to {
+          background: yellow;
+        }
+      }
+      div {
+        animation: myKeyFrame 5s infinite;
+      }
+    </style>
+  </head>
+  <body>
+    <div style="height: 100px; width: 100px"></div>
+  </body>
+</html>

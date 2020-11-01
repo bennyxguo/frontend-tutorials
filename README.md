@@ -42,7 +42,9 @@
 
 ### TicTacToe 三子棋
 
-《等待添加》
+1. [创建棋盘](http://tridiamond.tech/frontend-tutorials/exercises/tic-tac-toe/tic-tac-toe.html)
+2. [实现电脑玩家](http://tridiamond.tech/frontend-tutorials/exercises/tic-tac-toe/tic-tac-toe-computer.html)
+3. [实现 AI](http://tridiamond.tech/frontend-tutorials/exercises/tic-tac-toe/tic-tac-toe-ai.html)
 
 ### Path finder 寻路算法
 
@@ -52,3 +54,7 @@
 4. [处理路径问题](http://tridiamond.tech/frontend-tutorials/exercises/path-finder/4-map-find-path.html)
 5. [启发式寻路（A\*） —— 实现 Sorted 类](http://tridiamond.tech/frontend-tutorials/exercises/path-finder/5-map-sort-class.html)
 6. [启发式寻路（A\*）](http://tridiamond.tech/frontend-tutorials/exercises/path-finder/6-map-best-path.html)
+
+## CSS 排版与动画
+
+1. [行模型](https://tridiamond.tech/frontend-tutorials/css-tutorials/layouts/inline-model.html)

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Float | 三钻</title>
+    <link rel="stylesheet" href="../obsidian.css" />
+    <style>
+      .float-box {
+        margin: 10px;
+        float: left;
+        width: 100px;
+        height: 100px;
+        background-color: fuchsia;
+        color: #ededed;
+        text-align: center;
+        line-height: 100px;
+        font-size: 50px;
+      }
+      .buttons {
+        float: left;
+        clear: left;
+        display: block;
+        width: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="float-box">1</div>
+    <div class="float-box">2</div>
+    <div class="float-box">3</div>
+    <div class="float-box">4</div>
+    <div class="float-box">5</div>
+    <div class="float-box">6</div>
+    <div class="float-box">7</div>
+    <div class="buttons">
+      <button onclick="forceBreak()">强制换行</button>
+      <button onclick="clearBreak()">重置</button>
+    </div>
+  </body>
+  <script>
+    function forceBreak() {
+      let breakBox = document.getElementsByClassName('float-box')[3];
+      breakBox.style.clear = 'left';
+    }
+
+    function clearBreak() {
+      let breakBox = document.getElementsByClassName('float-box')[3];
+      breakBox.style.clear = 'initial';
+    }
+  </script>
+</html>

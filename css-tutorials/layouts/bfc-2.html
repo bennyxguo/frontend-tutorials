@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>创立 BFC 和 边距折叠 | 三钻</title>
+    <link rel="stylesheet" href="../obsidian.css" />
+    <style>
+      .box {
+        width: 100px;
+        height: 100px;
+        background-color: aqua;
+        margin: 20px;
+      }
+      .overflow-box {
+        overflow: visible;
+        background-color: #2d2f42;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box"></div>
+    <div class="overflow-box">
+      <div class="box"></div>
+    </div>
+    <div class="buttons">
+      Overflow:
+      <button onclick="changeOverflow('visible')">Visible</button>
+      <button onclick="changeOverflow('hidden')">Hidden</button>
+      <button onclick="addMargin(30)">Margin Top</button>
+      <button onclick="reset(30)">Reset</button>
+    </div>
+  </body>
+
+  <script>
+    function reset() {
+      let overflowBox = document.getElementsByClassName('overflow-box')[0];
+      overflowBox.style.overflow = 'visible';
+      overflowBox.style.margin = '0';
+    }
+
+    function addMargin(value) {
+      let overflowBox = document.getElementsByClassName('overflow-box')[0];
+      overflowBox.style.marginTop = `${value}px`;
+    }
+
+    function changeOverflow(prop) {
+      let floatText = document.getElementsByClassName('overflow-box')[0];
+
+      floatText.style.overflow = prop;
+    }
+  </script>
+</html>

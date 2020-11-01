@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HSL | 三钻</title>
+    <link rel="stylesheet" href="obsidian.css" />
+    <style>
+      .wrapper {
+        display: flex;
+        justify-content: center;
+        margin: 2em;
+      }
+      .button {
+        display: inline-block;
+        outline: none;
+        cursor: pointer;
+        text-align: center;
+        text-decoration: none;
+        font: 14px/100% Arial, Helvetica, sans-serif;
+        padding: 0.5em 2em 0.55em;
+        text-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
+        border-radius: 0.2rem;
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+        color: white;
+        border: solid 1px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="button">TriDiamond</div>
+    </div>
+  </body>
+  <script>
+    let btn = document.querySelector('.button');
+    let h = 25;
+    setInterval(() => {
+      h++;
+      h = h % 360;
+      btn.style.borderColor = `hsl(${h}, 95%, 45%)`;
+      btn.style.background = `linear-gradient(to bottom, hsl(${h},95%,54.1%), hsl(${h},95%,24.1%))`;
+      btn.style.boxShadow = `0 5px 15px hsl(${h},95%,24.1%)`;
+    }, 100);
+  </script>
+</html>

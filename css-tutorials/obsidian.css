@@ -9,7 +9,6 @@ body {
 }
 button {
   background: transparent;
-  /* border: none; */
   color: var(--blue-color);
   border: 1px solid aqua;
   padding: 0.5rem 1rem;
@@ -19,6 +18,9 @@ button {
 button:hover {
   background: var(--blue-color);
   color: #333;
+}
+.buttons {
+  color: var(--purple-color);
 }
 .purple {
   color: var(--purple-color);

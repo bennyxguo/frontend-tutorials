@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>创立 BFC 和 Float | 三钻</title>
+    <link rel="stylesheet" href="../obsidian.css" />
+    <style>
+      .float-box {
+        float: right;
+        width: 100px;
+        height: 100px;
+        background-color: aqua;
+        margin: 20px;
+      }
+      .text {
+        background-color: #2d2f42;
+        color: #ededed;
+        overflow: visible;
+        margin: 30px;
+        transition: all 500ms ease;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="float-box"></div>
+    <div class="text">
+      文字 文字 文字 文字 文字 文字 文字 文字 文字 文字 文字 文字 文字 文字 文字 文字 文字 文字 文字
+      文字 文字 文字 文字 文字 文字 文字 文字 文字 文字 文字 文字 文字 文字 文字 文字 文字 文字 文字
+      文字 文字 文字 文字 文字 文字 文字 文字 文字 文字 文字 文字 文字 文字 文字 文字 文字 文字 文字
+      文字 文字 文字 文字 文字 文字 文字 文字 文字 文字 文字 文字 文字 文字 文字 文字 文字 文字 文字
+      文字 文字 文字 文字 文字 文字 文字 文字 文字 文字 文字 文字 文字 文字 文字 文字 文字 文字 文字
+      文字 文字 文字 文字 文字 文字 文字 文字 文字 文字 文字 文字 文字 文字 文字 文字 文字 文字 文字
+      文字 文字 文字 文字 文字 文字 文字 文字 文字 文字 文字 文字 文字 文字 文字 文字 文字 文字 文字
+      文字 文字 文字 文字 文字 文字 文字 文字 文字 文字 文字 文字 文字 文字 文字 文字 文字 文字 文字
+      文字 文字 文字 文字 文字 文字 文字 文字 文字 文字 文字 文字 文字 文字 文字 文字 文字 文字 文字
+    </div>
+    <div class="buttons">
+      Overflow:
+      <button onclick="changeOverflow('visible')">Visible</button>
+      <button onclick="changeOverflow('hidden')">Hidden</button>
+    </div>
+  </body>
+
+  <script>
+    function changeOverflow(prop) {
+      let floatText = document.getElementsByClassName('text')[0];
+
+      floatText.style.overflow = prop;
+    }
+  </script>
+</html>
