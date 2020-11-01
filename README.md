@@ -42,7 +42,7 @@
 
 ### TicTacToe 三子棋
 
-1. [创建棋盘](http://tridiamond.tech/frontend-tutorials/exercises/tic-tac-toe/tic-tac-toe.html)
+1. [实现游戏](http://tridiamond.tech/frontend-tutorials/exercises/tic-tac-toe/tic-tac-toe.html)
 2. [实现电脑玩家](http://tridiamond.tech/frontend-tutorials/exercises/tic-tac-toe/tic-tac-toe-computer.html)
 3. [实现 AI](http://tridiamond.tech/frontend-tutorials/exercises/tic-tac-toe/tic-tac-toe-ai.html)
 
