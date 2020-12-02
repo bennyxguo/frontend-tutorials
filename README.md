@@ -48,13 +48,23 @@
 
 ### Path finder 寻路算法
 
-1. [寻路地图编辑器](http://tridiamond.tech/frontend-tutorials/exercises/path-finder/1-map-editor.html)
-2. [实现广度优先搜索](http://tridiamond.tech/frontend-tutorials/exercises/path-finder/2-map-path.html)
-3. [使用 Async & Await 来方便调试](http://tridiamond.tech/frontend-tutorials/exercises/path-finder/3-map-search-async.html)
-4. [处理路径问题](http://tridiamond.tech/frontend-tutorials/exercises/path-finder/4-map-find-path.html)
-5. [启发式寻路（A\*） —— 实现 Sorted 类](http://tridiamond.tech/frontend-tutorials/exercises/path-finder/5-map-sort-class.html)
-6. [启发式寻路（A\*）](http://tridiamond.tech/frontend-tutorials/exercises/path-finder/6-map-best-path.html)
+1. [寻路地图编辑器](https://tridiamond.tech/frontend-tutorials/exercises/path-finder/1-map-editor.html)
+2. [实现广度优先搜索](https://tridiamond.tech/frontend-tutorials/exercises/path-finder/2-map-path.html)
+3. [使用 Async & Await 来方便调试](https://tridiamond.tech/frontend-tutorials/exercises/path-finder/3-map-search-async.html)
+4. [处理路径问题](https://tridiamond.tech/frontend-tutorials/exercises/path-finder/4-map-find-path.html)
+5. [启发式寻路（A\*） —— 实现 Sorted 类](https://tridiamond.tech/frontend-tutorials/exercises/path-finder/5-map-sort-class.html)
+6. [启发式寻路（A\*）](https://tridiamond.tech/frontend-tutorials/exercises/path-finder/6-map-best-path.html)
 
-## CSS 排版与动画
+### KMP 算法
+
+1. [KMP 字符串匹配](https://tridiamond.tech/frontend-tutorials/exercises/kmp/kmp.js)
+
+### CSS 轮播图组件
+
+1. [自动轮播图](https://tridiamond.tech/frontend-tutorials/exercises/carousel-auto/dist/main.html)
+2. [拖拽轮播图](https://tridiamond.tech/frontend-tutorials/exercises/carousel-manual/dist/main.html)
+3. [手势库](https://tridiamond.tech/frontend-tutorials/exercises/gesture/gesture.html)
+
+# CSS 排版与动画
 
 1. [行模型](https://tridiamond.tech/frontend-tutorials/css-tutorials/layouts/inline-model.html)
