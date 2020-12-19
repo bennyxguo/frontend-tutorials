@@ -57,13 +57,15 @@
 
 ### KMP 算法
 
-1. [KMP 字符串匹配](https://tridiamond.tech/frontend-tutorials/exercises/kmp/kmp.js)
+1. [KMP 字符串匹配](https://github.com/TriDiamond/frontend-tutorials/blob/master/exercises/kmp/kmp.js)
 
-### CSS 轮播图组件
+### 轮播图组件 —— 前端组件化
 
 1. [自动轮播图](https://tridiamond.tech/frontend-tutorials/exercises/carousel-auto/dist/main.html)
 2. [拖拽轮播图](https://tridiamond.tech/frontend-tutorials/exercises/carousel-manual/dist/main.html)
-3. [手势库](https://tridiamond.tech/frontend-tutorials/exercises/gesture/gesture.html)
+3. [手势库](https://github.com/TriDiamond/frontend-tutorials/blob/master/exercises/gesture)
+4. [动画库](https://github.com/TriDiamond/frontend-tutorials/blob/master/exercises/animation-library)
+5. [手势动画应用](https://tridiamond.tech/frontend-tutorials/exercises/carousel-component/dist/main.html)
 
 # CSS 排版与动画
 

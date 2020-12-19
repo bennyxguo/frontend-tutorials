@@ -1,0 +1,49 @@
+<style>
+  :root {
+    --bg-color: #0f0e18;
+    --sub-bg-color: #2d2f42;
+    --purple-color: fuchsia;
+    --blue-color: aqua;
+  }
+  body {
+    background: var(--bg-color);
+  }
+  .buttons {
+    color: var(--purple-color);
+  }
+  .purple {
+    color: var(--purple-color);
+  }
+  .blue {
+    color: var(--blue-color);
+  }
+  .box {
+    width: 100px;
+    height: 100px;
+    background-color: aqua;
+    margin-bottom: 1rem;
+  }
+  .ease-box {
+    background-color: fuchsia !important;
+  }
+  button {
+    background: transparent;
+    color: var(--blue-color);
+    border: 1px solid aqua;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    transition: all 400ms ease;
+  }
+  button:hover {
+    background: var(--blue-color);
+    color: #333;
+  }
+</style>
+
+<body>
+  <div class="box" id="el"></div>
+  <div class="box ease-box" id="el2"></div>
+  <button id="pause-btn">Pause</button>
+  <button id="resume-btn">Resume</button>
+  <script src="./main.js"></script>
+</body>

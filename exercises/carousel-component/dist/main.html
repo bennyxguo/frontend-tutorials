@@ -1,0 +1,41 @@
+<head>
+  <style>
+    :root {
+      --bg-color: #0f0e18;
+      --sub-bg-color: #2d2f42;
+      --purple-color: fuchsia;
+      --blue-color: aqua;
+    }
+    body {
+      background: var(--bg-color);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 3rem;
+    }
+    h1 {
+      color: var(--purple-color);
+    }
+    .carousel {
+      width: 500px;
+      height: 281px;
+      white-space: nowrap;
+      overflow: hidden;
+    }
+
+    .carousel > div {
+      width: 500px;
+      height: 281px;
+      background-size: contain;
+      display: inline-block;
+      /* transition: ease 0.5s; */
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Carousel Component</h1>
+</body>
+
+<script src="./main.js"></script>
